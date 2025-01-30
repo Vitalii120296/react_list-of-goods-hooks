@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import 'bulma/css/bulma.css';
 import './App.scss';
@@ -25,8 +25,6 @@ export const App = () => {
         return good1.localeCompare(good2);
       case 'Sort by length':
         return good1.length - good2.length;
-      case '':
-        return [...goodsFromServer];
       default:
         return 0;
     }
@@ -87,7 +85,7 @@ export const App = () => {
         <button
           type="button"
           className={cn('button', 'is-danger', {
-            'is-light': sortField !== 'Reset',
+            'is-light': sortField === '' && reverseField === false,
           })}
           onClick={() => {
             pressReset();
